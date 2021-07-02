@@ -5,6 +5,7 @@ class NumSorter {
         this.maxNums = maxNums;
         this.allowedNums = {};
         this.numList = new Queue();
+        this.count = 0;
     }
 
     // Add a number to the list of allowed numbers
@@ -13,11 +14,12 @@ class NumSorter {
         if (!this.allowedNums[num]) {
             this.allowedNums[num] = true;
         }
+        // console.log(this.allowedNums)
     }
 
     // Returns the count of nums in numList
     numCount() {
-        return this.numList.count;
+        return this.count;
     }
 
     // Returns true if the number is allowed, false otherwise
@@ -34,6 +36,7 @@ class NumSorter {
         for (let i = 0; i <= amount; i++) {
             if (this.isNumAllowed(i)) {
                 this.numList.enqueue(i);
+                this.count++;
             }
         }
     }
@@ -41,13 +44,17 @@ class NumSorter {
     // Remove and return the first number in the numList
     // If numList is empty, return undefined
     getFirstNum() {
-        return this.numList.dequeue();
+        this.count--;
+        const val = this.numList.dequeue();
+        // console.log(val);
+        return val;
     }
 
     // Add a new number to the back of the numList
     addNumToBack(num) {
         if (this.isNumAllowed(num)) {
             this.numList.enqueue(num);
+            this.count++;
         }
     }
 

@@ -1,6 +1,6 @@
 
 class SinglyLinkedNode {
-    constuctor(va) {
+    constructor(val) {
         this.value = val;
         this.next = null;
     }
@@ -14,8 +14,9 @@ class Queue {
         this.length = 0;
     }
 
-    enqueue() {
-        let newNode = new SinglyLinkedNOde(val);
+    enqueue(val) {
+        let newNode = new SinglyLinkedNode(val);
+        // console.log('NewNode Value:', newNode.value)
         if (this.head) {
             this.tail.next = newNode;
             this.tail = newNode;
@@ -29,7 +30,8 @@ class Queue {
     }
 
     dequeue() {
-        const node = this.head;
+        let node = this.head;
+        // console.log('Node:', node, 'Value:', node.value);
         this.head = this.head.next;
         this.length--;
         return node.value;

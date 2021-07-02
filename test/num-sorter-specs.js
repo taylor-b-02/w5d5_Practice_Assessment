@@ -79,7 +79,6 @@ function numSorterLogic() {
     numSorter.buildNumList(2);
 
     if (numSorter.numCount() !== 1) return false;
-
     numSorter.addAllowedNum(2);
 
     numSorter.addNumToBack(2);
